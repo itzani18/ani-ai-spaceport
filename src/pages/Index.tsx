@@ -7,13 +7,12 @@ import Skills from '../components/Skills';
 import Experience from '../components/Experience';
 import Contact from '../components/Contact';
 import Navigation from '../components/Navigation';
-import ParticleBackground from '../components/ParticleBackground';
-import ScrollToTop from '../components/ScrollToTop';
+import MatrixBackground from '../components/MatrixBackground';
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
-      <ParticleBackground />
+    <div className="relative min-h-screen bg-black text-green-400 overflow-x-hidden font-mono">
+      <MatrixBackground />
       <Navigation />
       <Hero />
       <About />
@@ -21,17 +20,23 @@ const Index = () => {
       <Skills />
       <Experience />
       <Contact />
-      <ScrollToTop />
       
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-gray-800 bg-black/80 backdrop-blur-sm py-8">
-        <div className="container mx-auto px-6 text-center">
-          <div className="text-2xl font-mono mb-4">
-            <span className="text-cyan-400">&lt;</span>
-            <span className="text-white mx-2">Code. Learn. Repeat.</span>
-            <span className="text-cyan-400">/&gt;</span>
+      {/* Terminal Footer */}
+      <footer className="relative z-10 border-t-2 border-green-400 bg-black py-8">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="text-green-400 mb-4 font-bold text-xl">
+              <pre>{`
+███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗     ██████╗ ██╗   ██╗
+██╔════╝╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██╔═══██╗██║   ██║
+███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║    ██║   ██║██║   ██║
+╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ██║   ██║██║   ██║
+███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║    ╚██████╔╝╚██████╔╝
+╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝     ╚═════╝  ╚═════╝ 
+              `}</pre>
+            </div>
+            <p className="text-green-300">~/portfolio$ Connection established • Status: ONLINE • © 2024 Ani</p>
           </div>
-          <p className="text-gray-400">© 2024 Ani - AI/ML Innovator. All rights reserved.</p>
         </div>
       </footer>
     </div>

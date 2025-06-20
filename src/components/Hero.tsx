@@ -1,96 +1,137 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Rocket } from 'lucide-react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
-  const fullText = "Hi, I'm Ani – AI/ML Innovator 🚀";
+  const [currentLine, setCurrentLine] = useState(0);
+  
+  const terminalLines = [
+    "$ whoami",
+    "> Ani - AI/ML Engineer",
+    "$ cat skills.txt",
+    "> Python | TensorFlow | PyTorch | GenAI",
+    "$ ./initialize_portfolio.sh",
+    "> Loading neural networks...",
+    "> Calibrating algorithms...",
+    "> System ready for deployment! 🤖"
+  ];
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+    if (currentLine < terminalLines.length) {
+      let index = 0;
+      const currentText = terminalLines[currentLine];
+      const timer = setInterval(() => {
+        if (index <= currentText.length) {
+          setDisplayText(currentText.slice(0, index));
+          index++;
+        } else {
+          clearInterval(timer);
+          setTimeout(() => {
+            setCurrentLine(prev => prev + 1);
+            setDisplayText('');
+          }, 1000);
+        }
+      }, 50);
 
-    return () => clearInterval(timer);
-  }, []);
+      return () => clearInterval(timer);
+    }
+  }, [currentLine]);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="relative z-10 text-center px-6">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20">
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="bg-black border-2 border-green-400 rounded-lg p-8 shadow-2xl"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          {/* Terminal Header */}
+          <div className="flex items-center justify-between mb-6 border-b border-green-400 pb-3">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="text-green-400 text-sm">Terminal v2.4.1</div>
+          </div>
+
+          {/* Terminal Content */}
+          <div className="space-y-2 mb-8">
+            {terminalLines.slice(0, currentLine).map((line, index) => (
+              <div key={index} className="text-green-400">
+                {line}
+              </div>
+            ))}
+            <div className="text-green-400">
               {displayText}
-              <span className="animate-pulse">|</span>
-            </span>
-          </h1>
-          
-          <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+              <span className="animate-pulse">▊</span>
+            </div>
+          </div>
+
+          {/* ASCII Art */}
+          <div className="text-center mb-8">
+            <pre className="text-cyan-400 text-xs md:text-sm">
+{`    ___    _   _ _____ 
+   / _ \\  | \\ | |_   _|
+  / /_\\ \\ |  \\| | | |  
+  |  _  | | |\\   | | |  
+  | | | | | | \\  |_| |_ 
+  \\_| |_/ \\_| \\_/\\___/ 
+                       
+  [AI/ML ENGINEER v3.0]`}
+            </pre>
+          </div>
+
+          {/* Action Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 8 }}
           >
-            Crafting intelligent solutions with cutting-edge AI technologies. 
-            Transforming data into insights, algorithms into applications.
-          </motion.p>
+            <motion.button
+              className="px-6 py-3 bg-green-400 text-black font-bold rounded border-2 border-green-400 hover:bg-transparent hover:text-green-400 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              $ ./explore_projects.sh
+            </motion.button>
+
+            <motion.button
+              className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-bold rounded hover:bg-cyan-400 hover:text-black transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              $ wget resume.pdf
+            </motion.button>
+          </motion.div>
         </motion.div>
 
+        {/* Floating ASCII Robot */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          className="absolute right-10 top-1/2 transform -translate-y-1/2 hidden lg:block text-green-400"
+          animate={{
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         >
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 212, 255, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            <Rocket className="w-5 h-5" />
-            Explore My Work
-          </motion.button>
-
-          <motion.button
-            className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold text-lg hover:bg-cyan-400 hover:text-black transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download Resume
-          </motion.button>
+          <pre className="text-sm">
+{`    [o_o]
+     |_|
+    /| |\\
+   / | | \\
+     | |
+    _|_|_`}
+          </pre>
         </motion.div>
       </div>
-
-      {/* Floating AI Avatar */}
-      <motion.div
-        className="absolute right-10 top-1/2 transform -translate-y-1/2 hidden lg:block"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0, -5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <div className="w-32 h-32 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-full flex items-center justify-center text-4xl shadow-2xl">
-          🤖
-        </div>
-      </motion.div>
     </section>
   );
 };

@@ -1,42 +1,62 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
       title: "GenAI Agent Platform",
-      description: "Intelligent conversational AI agents powered by advanced language models, capable of complex reasoning and task automation.",
-      tech: ["Python", "LangChain", "OpenAI", "FastAPI", "React"],
-      gradient: "from-blue-500 to-cyan-500",
-      icon: "🤖"
+      description: "Advanced conversational AI with reasoning capabilities",
+      tech: ["Python", "LangChain", "OpenAI", "FastAPI"],
+      status: "DEPLOYED",
+      ascii: `
+ ┌─────────┐
+ │ 🤖 GenAI │
+ │  Agent  │
+ └─────────┘`,
+      color: "border-cyan-400"
     },
     {
       title: "Sign Language Detection",
-      description: "Real-time computer vision system for detecting and translating sign language gestures using deep learning models.",
-      tech: ["TensorFlow", "OpenCV", "MediaPipe", "Python", "Flask"],
-      gradient: "from-purple-500 to-pink-500",
-      icon: "👋"
+      description: "Real-time computer vision for sign language translation",
+      tech: ["TensorFlow", "OpenCV", "MediaPipe", "Python"],
+      status: "ACTIVE",
+      ascii: `
+ ┌─────────┐
+ │ 👋 Sign │
+ │ Detect  │
+ └─────────┘`,
+      color: "border-yellow-400"
     },
     {
-      title: "Company Social Media AI",
-      description: "Automated content generation and social media management platform using AI for brand-consistent posting.",
-      tech: ["GPT-4", "Firebase", "React", "Node.js", "MongoDB"],
-      gradient: "from-green-500 to-teal-500",
-      icon: "📱"
+      title: "Social Media AI",
+      description: "Automated content generation for brand consistency",
+      tech: ["GPT-4", "Firebase", "React", "Node.js"],
+      status: "BETA",
+      ascii: `
+ ┌─────────┐
+ │ 📱 Social│
+ │   AI    │
+ └─────────┘`,
+      color: "border-pink-400"
     },
     {
       title: "Wall Measurement AI",
-      description: "Computer vision application for accurate wall measurements from images using depth estimation and 3D reconstruction.",
-      tech: ["PyTorch", "OpenCV", "ARCore", "Unity", "C#"],
-      gradient: "from-orange-500 to-red-500",
-      icon: "📏"
+      description: "3D measurement using computer vision technology",
+      tech: ["PyTorch", "OpenCV", "ARCore", "Unity"],
+      status: "DEV",
+      ascii: `
+ ┌─────────┐
+ │ 📏 Measure│
+ │   AI     │
+ └─────────┘`,
+      color: "border-purple-400"
     }
   ];
 
   return (
-    <section id="projects" className="relative py-20">
+    <section id="projects" className="relative py-20 border-t-2 border-green-400">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -45,12 +65,12 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            Featured Projects
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-green-400">
+            [ PROJECT_DIRECTORY ]
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Exploring the frontiers of AI through innovative projects that push technological boundaries
-          </p>
+          <div className="text-green-300">
+            ani@localhost:~/projects$ ls -la
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -61,52 +81,68 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
-              className="group relative"
+              className="group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-20 rounded-2xl blur-xl transition-all duration-300"
-                   style={{ backgroundImage: `linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to))` }}></div>
-              
-              <div className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-cyan-400/50 transition-all duration-300">
-                <div className="flex items-center mb-6">
-                  <div className={`text-4xl mr-4 p-3 rounded-full bg-gradient-to-r ${project.gradient}`}>
-                    {project.icon}
+              <div className={`bg-black border-2 ${project.color} rounded-lg p-6 hover:shadow-2xl transition-all duration-300 hover:scale-105`}>
+                {/* Terminal Header */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
+                  <div className={`text-xs px-2 py-1 border rounded ${project.color.replace('border-', 'text-')}`}>
+                    {project.status}
+                  </div>
                 </div>
 
-                <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                {/* ASCII Art */}
+                <div className="text-center mb-4">
+                  <pre className={`${project.color.replace('border-', 'text-')} text-sm`}>
+                    {project.ascii}
+                  </pre>
+                </div>
+
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">
+                  {project.title}
+                </h3>
+
+                <p className="text-green-300 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/30 rounded-full text-cyan-400 text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                {/* Tech Stack */}
+                <div className="mb-4">
+                  <div className="text-yellow-400 text-xs mb-2">$ cat tech_stack.json</div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-green-400 bg-opacity-10 border border-green-400 rounded text-green-400 text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex gap-4">
+                {/* Action Buttons */}
+                <div className="flex gap-3">
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+                    className="flex items-center gap-2 px-3 py-2 border border-cyan-400 text-cyan-400 rounded text-sm hover:bg-cyan-400 hover:text-black transition-all duration-300"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-3 h-3" />
                     Code
                   </motion.button>
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition-all duration-300"
+                    className="flex items-center gap-2 px-3 py-2 border border-green-400 text-green-400 rounded text-sm hover:bg-green-400 hover:text-black transition-all duration-300"
                   >
-                    Live Demo
+                    <ExternalLink className="w-3 h-3" />
+                    Demo
                   </motion.button>
                 </div>
               </div>
