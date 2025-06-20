@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, LinkedIn } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 const Projects = () => {
   const projects = [

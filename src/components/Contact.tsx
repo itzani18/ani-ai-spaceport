@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, LinkedIn, WhatsApp, Rocket } from 'lucide-react';
+import { Github, Linkedin, MessageCircle, Rocket } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -150,8 +150,8 @@ const Contact = () => {
               <div className="space-y-4">
                 {[
                   { icon: Github, label: "GitHub", href: "#", color: "from-gray-600 to-gray-800" },
-                  { icon: LinkedIn, label: "LinkedIn", href: "#", color: "from-blue-600 to-blue-800" },
-                  { icon: WhatsApp, label: "WhatsApp", href: "#", color: "from-green-500 to-green-700" },
+                  { icon: Linkedin, label: "LinkedIn", href: "#", color: "from-blue-600 to-blue-800" },
+                  { icon: MessageCircle, label: "WhatsApp", href: "#", color: "from-green-500 to-green-700" },
                 ].map((social) => (
                   <motion.a
                     key={social.label}
