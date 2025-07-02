@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -7,12 +6,12 @@ const Experience = () => {
     {
       title: "Master of Computer Applications (MCA)",
       subtitle: "Specialization in AI/ML",
-      company: "National Institute of Technology",
+      company: "LNCT University",
       period: "2023 - 2025",
       description: "Advancing neural network architectures and deep learning algorithms. Research focus on GenAI agents and computer vision applications.",
       achievements: [
-        "CGPA: 8.7/10 (Current)",
-        "Research: GenAI agents & LLM applications", 
+        "GPA: 7.88/10.0 (Current)",
+        "Research: GenAI agents & LLM applications",
         "Published: Sign language detection paper",
         "Led: AI/ML workshop for 100+ students"
       ],
@@ -20,16 +19,43 @@ const Experience = () => {
       type: "education"
     },
     {
+      title: "Real-Time ISL Detection System Developer",
+      subtitle: "Internship",
+      company: "National Informatics Center, Raipur",
+      period: "Jan 2025 – June 2025",
+      description: "Built ISL gesture recognition system using CNN and OpenCV. Deployed in 100+ public service centers for aiding deaf users.",
+      achievements: [
+        "Achieved 94% gesture classification accuracy",
+        "Reduced model inference time by 30%",
+        "Enabled real-time video prediction pipeline"
+      ],
+      status: "COMPLETED",
+      type: "work"
+    },
+    {
       title: "Customer Service Support Engineer",
       subtitle: "Part-time Position",
-      company: "TechSupport Solutions", 
-      period: "2022 - 2023",
-      description: "Developed automation scripts and provided technical support while building problem-solving expertise and client communication skills.",
+      company: "Puthur Infotech Pvt. Ltd., Raipur",
+      period: "Sept 2022 – Feb 2023",
+      description: "Delivered IT support and technical documentation. Improved on-site reliability and client satisfaction through structured workflows.",
       achievements: [
-        "Resolved: 95% queries within SLA",
-        "Automated: Python scripts (-40% response time)",
-        "Trained: 5 new team members",
-        "Awarded: Employee of the Month (2x)"
+        "Resolved 95% support queries within SLA",
+        "Created technical SOPs for support teams",
+        "Improved user feedback rating by 20%"
+      ],
+      status: "COMPLETED",
+      type: "work"
+    },
+    {
+      title: "Django Web Development Intern",
+      subtitle: "Internship",
+      company: "Heptarise IT Solution, Raipur",
+      period: "Sept 2022 – Feb 2023",
+      description: "Developed service booking platform with authentication and dashboard. Built dynamic Django backend with modular architecture.",
+      achievements: [
+        "Implemented secure login/signup flow",
+        "Built reusable CRUD backend with MySQL",
+        "Designed responsive dashboard UI"
       ],
       status: "COMPLETED",
       type: "work"
@@ -46,7 +72,6 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          {/* Open to Work Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -60,7 +85,7 @@ const Experience = () => {
               </div>
             </div>
           </motion.div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-green-400">
             [ EXPERIENCE_LOG ]
           </h2>
@@ -71,7 +96,6 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-green-400"></div>
 
             {experiences.map((exp, index) => (
@@ -83,12 +107,10 @@ const Experience = () => {
                 viewport={{ once: true }}
                 className="relative mb-12"
               >
-                {/* Timeline dot */}
                 <div className="absolute left-6 w-4 h-4 bg-green-400 rounded-full border-4 border-black z-10"></div>
 
                 <div className="ml-20">
                   <div className="bg-black border-2 border-cyan-400 rounded-lg p-6">
-                    {/* Terminal Header */}
                     <div className="flex items-center justify-between mb-4 border-b border-gray-600 pb-3">
                       <div className="flex space-x-2">
                         <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -105,7 +127,7 @@ const Experience = () => {
                       {exp.type === 'education' && <span className="text-xl">🎓</span>}
                       {exp.type === 'work' && <span className="text-xl">💼</span>}
                     </div>
-                    
+
                     {exp.subtitle && (
                       <p className="text-cyan-400 text-sm font-medium mb-2">{exp.subtitle}</p>
                     )}

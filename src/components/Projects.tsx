@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
@@ -6,52 +5,79 @@ import { Github, ExternalLink } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: "GenAI Agent Platform",
-      description: "Advanced conversational AI with reasoning capabilities",
-      tech: ["Python", "LangChain", "OpenAI", "FastAPI"],
+      title: "Real-Time ISL Detection",
+      description:
+        "Built a deep learning model to detect 60+ ISL gestures in real time using CNN and OpenCV. Achieved 94% accuracy and optimized latency for live video prediction.",
+      tech: ["Python", "TensorFlow", "OpenCV", "NumPy"],
       status: "DEPLOYED",
+      github: "https://github.com/itzani18/isl-detector",
+      demo: "",
       ascii: `
- ┌─────────┐
- │ 🤖 GenAI │
- │  Agent  │
- └─────────┘`,
-      color: "border-cyan-400"
-    },
-    {
-      title: "Sign Language Detection",
-      description: "Real-time computer vision for sign language translation",
-      tech: ["TensorFlow", "OpenCV", "MediaPipe", "Python"],
-      status: "ACTIVE",
-      ascii: `
- ┌─────────┐
- │ 👋 Sign │
- │ Detect  │
- └─────────┘`,
+ ┌────────────┐
+ │ 🧠 ISL AI  │
+ │  Detector  │
+ └────────────┘`,
       color: "border-yellow-400"
     },
     {
-      title: "Social Media AI",
-      description: "Automated content generation for brand consistency",
-      tech: ["GPT-4", "Firebase", "React", "Node.js"],
-      status: "BETA",
+      title: "AI Resume Screening System",
+      description:
+        "Automates resume parsing and screening using NLP + ML (SVM, TF-IDF). Achieved 90% accuracy across 24+ job roles with PDF/DOCX/TXT parsing.",
+      tech: ["Python", "Streamlit", "Scikit-learn", "SpaCy"],
+      status: "DEPLOYED",
+      github: "https://github.com/itzani18/resume-screening-system",
+      demo: "",
       ascii: `
- ┌─────────┐
- │ 📱 Social│
- │   AI    │
- └─────────┘`,
-      color: "border-pink-400"
+ ┌────────────┐
+ │ 📄 Resume  │
+ │  Scanner   │
+ └────────────┘`,
+      color: "border-cyan-400"
     },
     {
-      title: "Wall Measurement AI",
-      description: "3D measurement using computer vision technology",
-      tech: ["PyTorch", "OpenCV", "ARCore", "Unity"],
-      status: "DEV",
+      title: "AI Career Planner Agent",
+      description:
+        "Voice-based GenAI assistant that plans career goals and sends WhatsApp reminders. Used Gemini API, ElevenLabs, LangChain, and RAG.",
+      tech: ["Python", "Gemini", "Firebase", "LangChain", "Twilio"],
+      status: "ACTIVE",
+      github: "https://github.com/itzani18/career-planner-agent",
+      demo: "",
       ascii: `
- ┌─────────┐
- │ 📏 Measure│
- │   AI     │
- └─────────┘`,
+ ┌────────────┐
+ │ 🗓️ Career  │
+ │  Planner   │
+ └────────────┘`,
+      color: "border-green-400"
+    },
+    {
+      title: "Aurevia – Smart Workspace App",
+      description:
+        "Gemini-powered task collaboration app with user login, real-time sync, and AI-generated content. Uses Firebase for backend and session handling.",
+      tech: ["Python", "Streamlit", "Firebase", "Gemini API"],
+      status: "BETA",
+      github: "",
+      demo: "https://aurevia-a-ai-agent-gjkmxexgikuznbsa4utnky.streamlit.app/",
+      ascii: `
+ ┌────────────┐
+ │ 📋 Aurevia │
+ │  App       │
+ └────────────┘`,
       color: "border-purple-400"
+    },
+    {
+      title: "Speech Emotion Recognition",
+      description:
+        "Trained models on 2000+ audio samples using MFCCs to classify emotion with 89% F1-score. Used in emotion-aware apps and mental health monitoring.",
+      tech: ["Python", "Librosa", "Scikit-learn", "XGBoost"],
+      status: "STABLE",
+      github: "https://github.com/itzani18/speech-emotion-recognition",
+      demo: "",
+      ascii: `
+ ┌────────────┐
+ │ 🎤 Emotion │
+ │  Detect    │
+ └────────────┘`,
+      color: "border-pink-400"
     }
   ];
 
@@ -84,7 +110,6 @@ const Projects = () => {
               className="group"
             >
               <div className={`bg-black border-2 ${project.color} rounded-lg p-6 hover:shadow-2xl transition-all duration-300 hover:scale-105`}>
-                {/* Terminal Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex space-x-2">
                     <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -96,7 +121,6 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* ASCII Art */}
                 <div className="text-center mb-4">
                   <pre className={`${project.color.replace('border-', 'text-')} text-sm`}>
                     {project.ascii}
@@ -111,7 +135,6 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
                 <div className="mb-4">
                   <div className="text-yellow-400 text-xs mb-2">$ cat tech_stack.json</div>
                   <div className="flex flex-wrap gap-2">
@@ -126,24 +149,34 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex gap-3">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-3 py-2 border border-cyan-400 text-cyan-400 rounded text-sm hover:bg-cyan-400 hover:text-black transition-all duration-300"
-                  >
-                    <Github className="w-3 h-3" />
-                    Code
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-3 py-2 border border-green-400 text-green-400 rounded text-sm hover:bg-green-400 hover:text-black transition-all duration-300"
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    Demo
-                  </motion.button>
+                  {project.github && (
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-3 py-2 border border-cyan-400 text-cyan-400 rounded text-sm hover:bg-cyan-400 hover:text-black transition-all duration-300"
+                    >
+                      <Github className="w-3 h-3" />
+                      Code
+                    </motion.a>
+                  )}
+
+                  {project.demo && (
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-3 py-2 border border-green-400 text-green-400 rounded text-sm hover:bg-green-400 hover:text-black transition-all duration-300"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      Demo
+                    </motion.a>
+                  )}
                 </div>
               </div>
             </motion.div>

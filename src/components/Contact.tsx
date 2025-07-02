@@ -2,7 +2,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, MessageCircle, Send } from 'lucide-react';
-
+import emailjs from 'emailjs-com';
+const SERVICE_ID = 'service_jmft816';       // <-- put your real ID here
+const TEMPLATE_ID = 'template_cqvdczr';     // <-- put your real ID here
+const PUBLIC_KEY = 'g4YtbRI-B8JNMSpOr'; 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,9 +15,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Message transmitted:', formData);
-    setFormData({ name: '', email: '', message: '' });
-  };
+    emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      formData,      // formData should have name, email, message keys
+      PUBLIC_KEY
+    ).then(
+      (result) => {
+        alert("Message sent! I'll contact you soon.");
+        setFormData({ name: '', email: '', message: '' });
+      },
+      (error) => {
+        alert('Failed to send. Please try again later.');
+        console.error(error);
+      }
+    );
+    };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -166,9 +182,24 @@ const Contact = () => {
               
               <div className="space-y-3">
                 {[
-                  { icon: Github, label: "GitHub", href: "#", prefix: "git clone" },
-                  { icon: Linkedin, label: "LinkedIn", href: "#", prefix: "curl -X GET" },
-                  { icon: MessageCircle, label: "WhatsApp", href: "#", prefix: "ping" },
+                  {
+                    icon: Github,
+                    label: "GitHub",
+                    href: "https://github.com/itzani18",  // <-- your GitHub
+                    prefix: "git clone"
+                  },
+                  {
+                    icon: Linkedin,
+                    label: "LinkedIn",
+                    href: "https://www.linkedin.com/in/aniket-choudhary-b05163232/", // <-- your LinkedIn
+                    prefix: "curl -X GET"
+                  },
+                  {
+                    icon: MessageCircle,
+                    label: "WhatsApp",
+                    href: "https://wa.me/919340907174",   // <-- your WhatsApp (use wa.me link with country code, no + or leading zeros)
+                    prefix: "ping"
+                  },
                 ].map((social) => (
                   <motion.a
                     key={social.label}

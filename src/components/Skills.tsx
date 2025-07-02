@@ -4,34 +4,60 @@ import { motion } from 'framer-motion';
 
 const Skills = () => {
   const skillCategories = [
-    {
-      category: "AI/ML FRAMEWORKS",
-      skills: [
-        { name: "TensorFlow", level: 95, ascii: "▓▓▓▓▓▓▓▓▓░" },
-        { name: "PyTorch", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
-        { name: "Scikit-learn", level: 88, ascii: "▓▓▓▓▓▓▓▓▓░" },
-        { name: "OpenCV", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" }
-      ]
-    },
-    {
-      category: "PROGRAMMING",
-      skills: [
-        { name: "Python", level: 98, ascii: "▓▓▓▓▓▓▓▓▓▓" },
-        { name: "JavaScript", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
-        { name: "R", level: 80, ascii: "▓▓▓▓▓▓▓▓░░" },
-        { name: "SQL", level: 88, ascii: "▓▓▓▓▓▓▓▓▓░" }
-      ]
-    },
-    {
-      category: "CLOUD & TOOLS",
-      skills: [
-        { name: "AWS", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
-        { name: "Firebase", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
-        { name: "Docker", level: 82, ascii: "▓▓▓▓▓▓▓▓░░" },
-        { name: "Git", level: 95, ascii: "▓▓▓▓▓▓▓▓▓░" }
-      ]
-    }
-  ];
+  {
+    category: "ML / DL FRAMEWORKS",
+    skills: [
+      { name: "TensorFlow", level: 95, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Scikit-learn", level: 92, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Keras", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "OpenCV", level: 88, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "XGBoost", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" }
+    ]
+  },
+  {
+    category: "GEN AI / NLP",
+    skills: [
+      { name: "LangChain", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "RAG", level: 88, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "Gemini Pro", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "Prompt Engineering", level: 92, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "OpenAI", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" }
+    ]
+  },
+  {
+    category: "TOOLS & DEPLOYMENT",
+    skills: [
+      { name: "Firebase", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Cloud Functions", level: 88, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "Streamlit", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Flask", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "REST APIs", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" }
+    ]
+  },
+  {
+    category: "PROGRAMMING / DATABASE",
+    skills: [
+      { name: "Python", level: 98, ascii: "▓▓▓▓▓▓▓▓▓▓" },
+      { name: "SQL", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "MySQL", level: 88, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "MongoDB", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "Firebase DB", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" }
+    ]
+  },
+  {
+    category: "CLOUD / CI & DOMAINS",
+    skills: [
+      { name: "Firebase", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "GCP (basic)", level: 75, ascii: "▓▓▓▓▓▓▓░░░" },
+      { name: "GitHub Actions", level: 80, ascii: "▓▓▓▓▓▓▓░░░" },
+      { name: "NLP", level: 92, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Computer Vision", level: 90, ascii: "▓▓▓▓▓▓▓▓▓░" },
+      { name: "Signal Processing", level: 85, ascii: "▓▓▓▓▓▓▓▓░░" },
+      { name: "Deep Learning", level: 93, ascii: "▓▓▓▓▓▓▓▓▓▓" }
+    ]
+  }
+];
+
 
   return (
     <section id="skills" className="relative py-20 border-t-2 border-green-400">

@@ -41,7 +41,7 @@ const About = () => {
                   <span className="text-red-400">&gt;</span> Mission: Transforming data into intelligent decisions
                 </p>
                 <p>
-                  <span className="text-red-400">&gt;</span> Current: MCA in AI/ML @ NIT (2023-2025)
+                  <span className="text-red-400">&gt;</span> Recent: MCA in AI/ML @LNCTU (2023-2025)
                 </p>
                 <p>
                   <span className="text-red-400">&gt;</span> Expertise: GenAI, Computer Vision, Deep Learning

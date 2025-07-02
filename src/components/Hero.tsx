@@ -8,7 +8,7 @@ const Hero = () => {
   
   const terminalLines = [
     "$ whoami",
-    "> Ani - AI/ML Engineer",
+    "> Aniket Choudhary - AI/ML Engineer",
     "$ cat skills.txt",
     "> Python | TensorFlow | PyTorch | GenAI",
     "$ ./initialize_portfolio.sh",
@@ -100,13 +100,17 @@ const Hero = () => {
               $ ./explore_projects.sh
             </motion.button>
 
-            <motion.button
-              className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-bold rounded hover:bg-cyan-400 hover:text-black transition-all duration-300"
+            <motion.a
+              href="https://drive.google.com/file/d/1GSp-EsBcwYSUIPlqRf98B83p9EEXLRQh/view?usp=sharing"
+              download
+              className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-bold rounded hover:bg-cyan-400 hover:text-black transition-all duration-300 flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               $ wget resume.pdf
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
 
