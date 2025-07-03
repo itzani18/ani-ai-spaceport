@@ -1,44 +1,8 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, MessageCircle, Send } from 'lucide-react';
-import emailjs from 'emailjs-com';
-const SERVICE_ID = 'service_jmft816';       // <-- put your real ID here
-const TEMPLATE_ID = 'template_cqvdczr';     // <-- put your real ID here
-const PUBLIC_KEY = 'g4YtbRI-B8JNMSpOr'; 
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      formData,      // formData should have name, email, message keys
-      PUBLIC_KEY
-    ).then(
-      (result) => {
-        alert("Message sent! I'll contact you soon.");
-        setFormData({ name: '', email: '', message: '' });
-      },
-      (error) => {
-        alert('Failed to send. Please try again later.');
-        console.error(error);
-      }
-    );
-    };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <section id="contact" className="relative py-20 border-t-2 border-green-400">
       <div className="container mx-auto px-6">
@@ -75,8 +39,13 @@ const Contact = () => {
                 </div>
                 <div className="text-xs text-cyan-400">message_sender.sh</div>
               </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
+
+              {/* Formspree Form */}
+              <form
+                action="https://formspree.io/f/xjkrzjnz"
+                method="POST"
+                className="space-y-4"
+              >
                 <div>
                   <label className="block text-green-400 text-sm mb-2 font-mono">
                     $ echo "Enter your name:"
@@ -84,8 +53,6 @@ const Contact = () => {
                   <input
                     type="text"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 bg-black border border-green-400 rounded text-green-400 font-mono focus:border-cyan-400 focus:outline-none placeholder-gray-500"
                     placeholder="> John Doe"
@@ -99,8 +66,6 @@ const Contact = () => {
                   <input
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 bg-black border border-green-400 rounded text-green-400 font-mono focus:border-cyan-400 focus:outline-none placeholder-gray-500"
                     placeholder="> john@example.com"
@@ -113,8 +78,6 @@ const Contact = () => {
                   </label>
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows={4}
                     className="w-full px-3 py-2 bg-black border border-green-400 rounded text-green-400 font-mono focus:border-cyan-400 focus:outline-none placeholder-gray-500 resize-none"
@@ -135,7 +98,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* System Status & Links */}
+          {/* Right panel (same as before) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -143,33 +106,24 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* ASCII Robot */}
             <div className="bg-black border-2 border-green-400 rounded-lg p-6 text-center">
               <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="text-green-400 mb-4"
               >
-                <pre className="text-sm">
-{`    ┌───┐
+                <pre className="text-sm">{`    ┌───┐
     │ ◉ ◉ │
     │  ∀  │ 
     └─┬─┬─┘
       │ │
     ┌─┴─┴─┐
     │READY│
-    └─────┘`}
-                </pre>
+    └─────┘`}</pre>
               </motion.div>
               <p className="text-green-300 text-sm">
-                System Status: ONLINE<br/>
-                Response Time: &lt; 24hrs<br/>
+                System Status: ONLINE<br />
+                Response Time: &lt; 24hrs<br />
                 Collaboration Mode: ACTIVE
               </p>
             </div>
@@ -179,27 +133,26 @@ const Contact = () => {
               <h3 className="text-xl font-bold text-green-400 text-center">
                 [ SOCIAL_NETWORKS ]
               </h3>
-              
               <div className="space-y-3">
                 {[
                   {
                     icon: Github,
                     label: "GitHub",
-                    href: "https://github.com/itzani18",  // <-- your GitHub
+                    href: "https://github.com/itzani18",
                     prefix: "git clone"
                   },
                   {
                     icon: Linkedin,
                     label: "LinkedIn",
-                    href: "https://www.linkedin.com/in/aniket-choudhary-b05163232/", // <-- your LinkedIn
+                    href: "https://www.linkedin.com/in/aniket-choudhary-b05163232/",
                     prefix: "curl -X GET"
                   },
                   {
                     icon: MessageCircle,
                     label: "WhatsApp",
-                    href: "https://wa.me/919340907174",   // <-- your WhatsApp (use wa.me link with country code, no + or leading zeros)
+                    href: "https://wa.me/919340907174",
                     prefix: "ping"
-                  },
+                  }
                 ].map((social) => (
                   <motion.a
                     key={social.label}
