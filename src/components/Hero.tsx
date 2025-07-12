@@ -101,7 +101,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.a
-              href="https://drive.google.com/file/d/1eq-wL2GjcsyDqsTbrL9b0pfpvkfSjs-E/view?usp=drive_link"
+              href="https://drive.google.com/file/d/11yLmNEsYtp0GVSwKOujmcXwUEOWMMODq/view?usp=sharing"
               download
               className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-bold rounded hover:bg-cyan-400 hover:text-black transition-all duration-300 flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
